@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Happy Birthday Princess Cantikuu!</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -36,14 +36,19 @@
   --shadow-pink: rgba(232,67,147,0.2);
 }
 
-* { margin:0; padding:0; box-sizing:border-box; }
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+
+html { -webkit-text-size-adjust:100%; }
 
 body {
   font-family:'Fredoka',sans-serif;
   background: linear-gradient(135deg, var(--pink-100), var(--pink-200), #f0e6ff);
   min-height:100vh;
+  min-height:-webkit-fill-available;
   overflow-x:hidden;
   color: var(--text-dark);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 
 /* Screen system */
@@ -51,13 +56,19 @@ body {
   position:fixed; inset:0;
   display:flex; align-items:center; justify-content:center; flex-direction:column;
   opacity:0; pointer-events:none;
+  -webkit-transition: opacity 0.8s ease, transform 0.8s ease;
   transition: opacity 0.8s ease, transform 0.8s ease;
+  -webkit-transform: scale(0.95);
   transform: scale(0.95);
   z-index:1;
   padding: 20px;
+  padding: env(safe-area-inset-top, 20px) env(safe-area-inset-right, 20px) env(safe-area-inset-bottom, 20px) env(safe-area-inset-left, 20px);
+  will-change: opacity, transform;
 }
 .screen.active {
-  opacity:1; pointer-events:all; transform:scale(1); z-index:10;
+  opacity:1; pointer-events:all;
+  -webkit-transform:scale(1); transform:scale(1);
+  z-index:10;
 }
 
 /* Heart rain canvas */
@@ -70,6 +81,7 @@ body {
    ============================================ */
 .keypad-container {
   background: rgba(255,255,255,0.75);
+  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   border-radius: 32px;
   padding: 40px 32px 32px;
@@ -77,6 +89,8 @@ body {
   text-align:center;
   max-width: 380px;
   width:100%;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .keypad-container h2 {
   font-family:'Fredoka',sans-serif;
@@ -122,10 +136,13 @@ body {
   background: linear-gradient(145deg, #fff, var(--pink-100));
   color: var(--text-dark);
   cursor:pointer;
+  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
   box-shadow: 0 4px 15px rgba(0,0,0,0.06);
   display:flex; align-items:center; justify-content:center;
   margin: 0 auto;
+  -webkit-appearance:none;
+  touch-action:manipulation;
 }
 .key-btn:hover {
   transform: scale(1.1);
@@ -144,6 +161,7 @@ body {
    ============================================ */
 .msg-card {
   background: rgba(255,255,255,0.8);
+  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   border-radius: 28px;
   padding: 48px 36px;
@@ -153,6 +171,8 @@ body {
   box-shadow: 0 20px 60px var(--shadow-pink);
   position: relative;
   overflow: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .msg-card::before {
   content:'';
@@ -194,11 +214,15 @@ body {
   font-size:1.05rem;
   font-weight:500;
   cursor:pointer;
+  -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   box-shadow: 0 8px 25px var(--shadow-pink);
   position:relative;
+  -webkit-appearance:none;
+  touch-action:manipulation;
 }
-.btn-next:hover {
+.btn-next:hover, .btn-next:active {
+  -webkit-transform: translateY(-3px) scale(1.03);
   transform: translateY(-3px) scale(1.03);
   box-shadow: 0 12px 35px rgba(232,67,147,0.35);
 }
@@ -212,19 +236,27 @@ body {
   background: linear-gradient(135deg, #a8e6cf, #55efc4);
   color: #2d6a4f; font-family:'Fredoka',sans-serif;
   font-size:1.05rem; font-weight:600;
-  cursor:pointer; transition: all 0.3s ease;
+  cursor:pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
   box-shadow: 0 6px 20px rgba(85,239,196,0.3);
+  -webkit-appearance:none;
+  touch-action:manipulation;
 }
-.btn-yes:hover { transform:translateY(-3px) scale(1.05); }
+.btn-yes:hover, .btn-yes:active { -webkit-transform:translateY(-3px) scale(1.05); transform:translateY(-3px) scale(1.05); }
 .btn-no {
   padding: 14px 40px;
   border:none; border-radius:50px;
   background: linear-gradient(135deg, #ffa0a0, #ff6b6b);
   color:#fff; font-family:'Fredoka',sans-serif;
   font-size:1.05rem; font-weight:600;
-  cursor:pointer; transition: all 0.15s ease;
+  cursor:pointer;
+  -webkit-transition: all 0.15s ease;
+  transition: all 0.15s ease;
   box-shadow: 0 6px 20px rgba(255,107,107,0.3);
   position: absolute;
+  touch-action:none;
+  -webkit-appearance:none;
 }
 
 /* ============================================
@@ -232,9 +264,11 @@ body {
    ============================================ */
 .final-screen {
   overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
   align-items: flex-start !important;
   padding-top: 60px !important;
   padding-bottom: 60px !important;
+  padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px)) !important;
 }
 .final-container {
   max-width: 560px; width:100%;
@@ -255,12 +289,15 @@ body {
 }
 .final-container .bday-msg {
   background: rgba(255,255,255,0.8);
+  -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
   border-radius: 24px;
   padding: 36px 28px;
   text-align:center;
   box-shadow: 0 12px 40px var(--shadow-pink);
   width:100%;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .bday-msg p {
   font-family:'Poppins',sans-serif;
@@ -270,11 +307,14 @@ body {
 .spotify-section {
   width:100%;
   background: rgba(255,255,255,0.7);
+  -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
   border-radius: 24px;
   padding: 28px;
   box-shadow: 0 12px 40px var(--shadow-pink);
   text-align:center;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .spotify-section h3 {
   font-family:'Fredoka',sans-serif;
@@ -289,10 +329,13 @@ body {
 .letter-section {
   width:100%;
   background: rgba(255,255,255,0.85);
+  -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
   border-radius: 24px;
   padding: 40px 28px;
   box-shadow: 0 12px 40px var(--shadow-pink);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .letter-section h3 {
   font-family:'Fredoka',sans-serif;
@@ -307,21 +350,49 @@ body {
   line-height: 2;
   color: var(--text-dark);
   opacity: 0;
+  -webkit-transform: translateY(15px);
   transform: translateY(15px);
+  -webkit-transition: opacity 0.8s ease, -webkit-transform 0.8s ease;
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 .letter-line.visible {
-  opacity:1; transform:translateY(0);
+  opacity:1; -webkit-transform:translateY(0); transform:translateY(0);
 }
 .emoji-big { font-size: 3rem; display:block; margin: 12px auto; text-align:center; }
 
-/* Responsive */
+/* Responsive - Mobile */
 @media(max-width:480px){
-  .keypad-container{padding:28px 20px}
-  .key-btn{width:62px;height:62px;font-size:1.3rem}
-  .msg-card{padding:32px 20px}
-  .msg-card h1{font-size:1.5rem}
-  .final-container .bday-title{font-size:1.8rem}
+  .keypad-container{padding:28px 16px}
+  .key-btn{width:60px;height:60px;font-size:1.25rem}
+  .keypad-grid{gap:10px}
+  .msg-card{padding:28px 18px}
+  .msg-card h1{font-size:1.4rem}
+  .msg-card .msg-text{font-size:0.9rem}
+  .msg-card img, .msg-card .gif-img{max-width:160px}
+  .keypad-gif{max-width:110px}
+  .final-container .bday-title{font-size:1.6rem}
+  .final-container{gap:24px}
+  .bday-msg{padding:24px 18px}
+  .letter-section{padding:28px 18px}
+  .spotify-section{padding:20px 14px}
+  .btn-next{padding:12px 32px; font-size:0.95rem}
+  .btn-yes, .btn-no{padding:12px 32px; font-size:0.95rem}
+  .icon-big{font-size:2.2rem}
+  .music-fab{width:46px; height:46px; bottom:16px; right:16px}
+  .music-fab i{font-size:1rem}
+  .music-fab-label{bottom:22px; right:70px; font-size:0.7rem}
+}
+
+/* Extra small screens (iPhone SE, etc.) */
+@media(max-width:375px){
+  .keypad-container{padding:20px 14px}
+  .key-btn{width:54px;height:54px;font-size:1.15rem}
+  .keypad-grid{gap:8px}
+  .pin-dots{gap:8px; margin-bottom:20px}
+  .pin-dot{width:14px; height:14px}
+  .keypad-gif{max-width:90px; margin-bottom:12px}
+  .msg-card h1{font-size:1.25rem}
+  .final-container .bday-title{font-size:1.4rem}
 }
 
 /* ============================================
@@ -330,18 +401,24 @@ body {
 .music-fab {
   position:fixed;
   bottom:24px; right:24px;
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
   width:52px; height:52px;
   border-radius:50%;
   border:none;
   background: rgba(255,255,255,0.75);
+  -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
   box-shadow: 0 8px 28px var(--shadow-pink), 0 0 0 1px rgba(255,255,255,0.5);
   cursor:pointer;
   z-index:100;
   display:flex; align-items:center; justify-content:center;
+  -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   opacity:0; pointer-events:none;
+  -webkit-transform: scale(0.8);
   transform: scale(0.8);
+  -webkit-appearance:none;
+  touch-action:manipulation;
 }
 .music-fab.visible {
   opacity:1; pointer-events:all; transform:scale(1);
@@ -362,7 +439,9 @@ body {
 .music-fab-label {
   position:fixed;
   bottom:30px; right:84px;
+  bottom: calc(30px + env(safe-area-inset-bottom, 0px));
   background: rgba(255,255,255,0.85);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   padding: 6px 14px;
   border-radius: 20px;
@@ -372,6 +451,7 @@ body {
   box-shadow: 0 4px 16px rgba(0,0,0,0.06);
   z-index:100;
   opacity:0; pointer-events:none;
+  -webkit-transition: opacity 0.4s ease;
   transition: opacity 0.4s ease;
   white-space:nowrap;
 }
@@ -625,16 +705,33 @@ function resetNoBtn() {
   btn.style.top = "75%";
 }
 
-function dodgeBtn() {
+function dodgeBtn(e) {
+  if (e) e.preventDefault();
   const btn = document.getElementById("btnNo");
   const card = btn.closest(".msg-card");
   const cw = card.offsetWidth, ch = card.offsetHeight;
   const bw = btn.offsetWidth, bh = btn.offsetHeight;
-  const rx = Math.random() * (cw - bw - 20) + 10;
-  const ry = Math.random() * (ch - bh - 20) + 10;
+  const margin = 15;
+  const rx = Math.random() * (cw - bw - margin * 2) + margin;
+  const ry = Math.random() * (ch - bh - margin * 2) + margin;
   btn.style.left = rx + "px";
   btn.style.top = ry + "px";
 }
+
+// iOS touch fix: prevent default on No button to avoid scroll + dodge glitch
+document.addEventListener('DOMContentLoaded', function() {
+  const btnNo = document.getElementById('btnNo');
+  if (btnNo) {
+    btnNo.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      dodgeBtn(e);
+    }, {passive: false});
+    btnNo.addEventListener('touchmove', function(e) {
+      e.preventDefault();
+      dodgeBtn(e);
+    }, {passive: false});
+  }
+});
 
 /* ============================================
    FLOATING MUSIC PLAYER LOGIC
