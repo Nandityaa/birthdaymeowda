@@ -493,7 +493,7 @@ body {
   .final-container .bday-title{font-size:1.6rem}
   .final-container{gap:24px}
   .bday-msg{padding:24px 18px}
-  .letter-section{padding:28px 18px}
+  .letter-section{padding:28px 18px 80px 18px; padding-bottom:calc(80px + env(safe-area-inset-bottom, 0px))}
   .spotify-section{padding:20px 14px}
   .btn-next{padding:12px 32px; font-size:0.95rem}
   .btn-yes, .btn-no{padding:12px 32px; font-size:0.95rem}
@@ -501,9 +501,10 @@ body {
   .gallery-grid{gap:10px}
   .polaroid{padding:6px 6px 22px}
   .polaroid .caption{font-size:0.6rem}
-  .counter-num{font-size:1.4rem}
-  .counter-label{font-size:0.55rem}
-  .counter-item{padding:10px 6px}
+  .counter-grid{grid-template-columns: repeat(2, 1fr); gap: 12px}
+  .counter-num{font-size:1.6rem}
+  .counter-label{font-size:0.65rem}
+  .counter-item{padding:12px 10px}
   .love-counter{padding:24px 16px}
 }
 
@@ -517,8 +518,8 @@ body {
   .keypad-gif{max-width:90px; margin-bottom:12px}
   .msg-card h1{font-size:1.25rem}
   .final-container .bday-title{font-size:1.4rem}
-  .counter-num{font-size:1.2rem}
-  .counter-grid{gap:6px}
+  .counter-num{font-size:1.4rem}
+  .counter-grid{gap:10px}
 }
 </style>
 </head>
@@ -617,7 +618,7 @@ body {
   <div class="msg-card" style="max-width:520px;">
     <div class="icon-big"><i class="fa-solid fa-camera-retro icon-pink"></i></div>
     <h1>Momen Kita <i class="fa-solid fa-heart icon-inline icon-pink"></i></h1>
-    <p class="msg-text">Beberapa kenangan terindah yang gak akan pernah aku lupain...</p>
+    <p class="msg-text">Beberapa kenangan terindah yang nda akan pernah aku lupain...</p>
     <div class="gallery-grid">
       <!-- ✏️ EDIT: Ganti src dengan URL foto kalian berdua -->
       <div class="polaroid" style="--rot:-3deg">
@@ -630,7 +631,7 @@ body {
       </div>
       <div class="polaroid" style="--rot:1.5deg">
         <img src="lucu.jpeg" alt="Momen lucu">
-        <div class="caption">Momen lucu</div>
+        <div class="caption">Momen lucu (fresh)</div>
       </div>
       <div class="polaroid" style="--rot:-2deg">
         <img src="foto favorit.jpeg" alt="Favorit aku">
@@ -648,7 +649,7 @@ body {
   <div class="msg-card" style="overflow:visible; min-height:350px; position:relative;">
     <div class="icon-big"><i class="fa-solid fa-face-grin-hearts icon-pink"></i></div>
     <h1>Are you ready?</h1>
-    <p class="msg-text">Siap untuk kejutan terbesarnya? <i class="fa-solid fa-wand-magic-sparkles icon-inline icon-purple"></i></p>
+    <p class="msg-text">Nah ini bagian terakhirnya <i class="fa-solid fa-wand-magic-sparkles icon-inline icon-purple"></i></p>
     <div style="display:flex; gap:20px; justify-content:center; margin-top:16px; position:relative;">
       <button class="btn-yes" onclick="goTo('screenFinal')">Yes! <i class="fa-solid fa-heart icon-inline"></i></button>
     </div>
@@ -664,7 +665,7 @@ body {
   <div class="final-container">
 
     <!-- 🎂 Judul Ucapan -->
-    <h1 class="bday-title"><i class="fa-solid fa-cake-candles icon-inline"></i> Happy 18th Birthday, Princess! <i class="fa-solid fa-cake-candles icon-inline"></i></h1>
+    <h1 class="bday-title"><i class="fa-solid fa-cake-candles icon-inline"></i> Happy 18th Birthday, Princess cantikku! <i class="fa-solid fa-cake-candles icon-inline"></i></h1>
 
     <!-- ✏️ EDIT: GIF selebrasi -->
     <img style="max-width:180px; border-radius:16px;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWNlOGl2MmF1eXF1ZWhrYzhjMnpmbDBmZnU0aGR1OGY0OHFwMnk5ciZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/aQuMoDDzHv4AivLPNn/giphy.gif" alt="celebration">
@@ -674,15 +675,15 @@ body {
       <div class="icon-big"><i class="fa-solid fa-party-horn icon-pink" style="font-size:2.5rem;"></i></div>
       <p>
         Selamat ulang tahun yang ke-18, sayangku! <i class="fa-solid fa-champagne-glasses icon-inline icon-gold"></i><i class="fa-solid fa-heart icon-inline icon-pink"></i><br><br>
-        Sekarang kamu udah resmi dewasa — tapi tetap jadi princess kecilku yang paling cantik dan paling lucu sedunia. <i class="fa-solid fa-earth-americas icon-inline icon-purple"></i><i class="fa-solid fa-crown icon-inline icon-gold"></i><br><br>
-        Semoga di umur yang baru ini, semua mimpi kamu tercapai, selalu sehat, selalu bahagia, dan selalu tau bahwa ada yang sayang banget sama kamu. <i class="fa-solid fa-heart icon-inline icon-pink"></i>
+        Sekarang kamu udah resmi legal anjay legal, tapi tetap jadi princessku yang paling cantik dan paling imut kiyut sedunia. <i class="fa-solid fa-earth-americas icon-inline icon-purple"></i><i class="fa-solid fa-crown icon-inline icon-gold"></i><br><br>
+        Semoga di umur yang baru ini, semua mimpi kamu tercapai, selalu sehat, selalu bahagia, dan selalu tau bahwa ada yang sayang cekaliiiii sama kamu. <i class="fa-solid fa-heart icon-inline icon-pink"></i>
       </p>
     </div>
 
     <!-- 🎵 Spotify Playlist -->
     <!-- ✏️ EDIT: Ganti src iframe dengan link embed Spotify kamu -->
     <div class="spotify-section">
-      <h3><i class="fa-solid fa-music icon-pink"></i> Lagu Spesial Buat Kamu</h3>
+      <h3><i class="fa-solid fa-music icon-pink"></i> Lagu Spesial Buat Kamu XIXIXI</h3>
       <iframe
         style="border-radius:12px"
         src="https://open.spotify.com/embed/track/0vg4WnUWvze6pBOJDTq99k?utm_source=generator&theme=0"
@@ -698,34 +699,34 @@ body {
     <!-- 💌 Surat Panjang dengan Fade-in -->
     <!-- ✏️ EDIT: Ubah isi surat di bawah, setiap <p class="letter-line"> = 1 paragraf -->
     <div class="letter-section" id="letterSection">
-      <h3><i class="fa-solid fa-envelope-open-text icon-pink"></i> Surat Kecil Dari Aku</h3>
+      <h3><i class="fa-solid fa-envelope-open-text icon-pink"></i> Surat Kecil Dari Aku xixixi</h3>
 
-      <p class="letter-line">Dear princess cantikku,</p>
+      <p class="letter-line">Dear princess cantikku, ASEK</p>
 
-      <p class="letter-line">Pertama-tama, aku mau bilang — Happy Birthday! <i class="fa-solid fa-cake-candles icon-inline icon-pink"></i> Ini adalah hari yang paling spesial, dan aku seneng banget bisa jadi bagian dari hari ini.</p>
+      <p class="letter-line">Pertama, aku mau bilang Happy Birthday cantikkk! <i class="fa-solid fa-cake-candles icon-inline icon-pink"></i> Ini adalah hari yang paling spesial, dan aku seneng banget bisa jadi bagian dari hari ini.</p>
 
-      <p class="letter-line">Kamu tau gak? Setiap kali aku liat kamu senyum, dunia aku berasa lebih cerah. Kayak matahari yang tiba-tiba muncul setelah hujan. <i class="fa-solid fa-sun icon-inline icon-gold"></i><i class="fa-solid fa-cloud-rain icon-inline icon-purple"></i></p>
+      <p class="letter-line">Kamu tau ndaa? Setiap kali aku liat kamu senyum tuu, hari hari ku itu rasanya cerah banget. Kayak matahari yang tiba tiba muncul setelah hujan badai angin ribut. <i class="fa-solid fa-sun icon-inline icon-gold"></i><i class="fa-solid fa-cloud-rain icon-inline icon-purple"></i></p>
 
-      <p class="letter-line">Di umur kamu yang ke-18 ini, aku harap kamu makin percaya diri, makin berani ngejar mimpi, dan makin sayang sama diri sendiri. Karena kamu layak dapet yang terbaik. <i class="fa-solid fa-hand-fist icon-inline icon-rose"></i><i class="fa-solid fa-sparkles icon-inline icon-gold"></i></p>
+      <p class="letter-line">Di umur kamu yang ke 18 ini, aku harap kamu makin percaya diri pastinya, makin berani ngejar mimpi kamu, dan makin sayang sama diri sendiri paling utama. Karena kamu layak banget dapet yang terbaik. <i class="fa-solid fa-hand-fist icon-inline icon-rose"></i><i class="fa-solid fa-sparkles icon-inline icon-gold"></i></p>
 
-      <p class="letter-line">Makasih udah jadi orang yang selalu bikin hari-hari aku lebih berwarna. Makasih udah jadi tempat aku cerita, ketawa, dan kadang nangis juga. <i class="fa-solid fa-face-smile-beam icon-inline icon-purple"></i></p>
+      <p class="letter-line">Maaacii udah jadi orang yang selalu bikin hari hari aku lebih berwarna (meskipun kdg jg bikin kesal 😡). Maacii uda jadi tempat aku cerita, ketawa, dan kadang nangis juga hehe. <i class="fa-solid fa-face-smile-beam icon-inline icon-purple"></i></p>
 
-      <p class="letter-line">Aku janji bakal selalu ada buat kamu, di hari-hari baik maupun hari-hari yang susah. Karena kamu bukan cuma cantik di luar, tapi juga cantik di dalam. <i class="fa-solid fa-heart icon-inline icon-pink"></i></p>
+      <p class="letter-line">Aku janji bakal selalu ada buat kamunya, di hari hari baik maupun hari hari yang susah. Karena kamu bukan cuma cantik di luar, tapi juga cantik di dalam 🤤. <i class="fa-solid fa-heart icon-inline icon-pink"></i></p>
 
-      <p class="letter-line">Jangan pernah berubah jadi orang lain, karena kamu yang sekarang sudah sempurna. Tetap jadi diri kamu yang lucu, baik, dan penuh kasih sayang. <i class="fa-solid fa-clover icon-inline icon-green"></i></p>
+      <p class="letter-line">Jangan pernah berubah jadi orang lain, karena kamu yang sekarang sudah sempurna. Tetap jadi diri kamu yang lucu, baik, imut, dan penuh kasih sayang. <i class="fa-solid fa-clover icon-inline icon-green"></i></p>
 
-      <p class="letter-line">Sekali lagi, Happy 18th Birthday, my princess! Semoga tahun ini jadi tahun terbaik kamu. I'm so proud of you! <i class="fa-solid fa-wand-magic-sparkles icon-inline icon-purple"></i><i class="fa-solid fa-crown icon-inline icon-gold"></i><i class="fa-solid fa-heart icon-inline icon-pink"></i></p>
+      <p class="letter-line">Sekali lagi, Happy 18th Birthday, princess cantikuu! Semoga tahun ini dan tahun tahun berikutnya juga jadi tahun terbaik kamu. I'm so proud of you! <i class="fa-solid fa-wand-magic-sparkles icon-inline icon-purple"></i><i class="fa-solid fa-crown icon-inline icon-gold"></i><i class="fa-solid fa-heart icon-inline icon-pink"></i></p>
 
       <p class="letter-line" style="text-align:right; margin-top:24px;">
         <strong>With all my love,</strong><br>
         <!-- ✏️ EDIT: Ganti nama pengirim di bawah -->
-        <em>Dari seseorang yang sayang kamu~ <i class="fa-solid fa-heart icon-inline icon-pink"></i></em>
+        <em>Dari Bubub Akai~ <i class="fa-solid fa-heart icon-inline icon-pink"></i></em>
       </p>
     </div>
 
     <!-- ✏️ EDIT: Counter Waktu Jadian (tanggal mulai: 25 Mei 2025) -->
     <div class="love-counter">
-      <h3><i class="fa-solid fa-heart-pulse icon-pink"></i> Kita Sudah Bersama Selama</h3>
+      <h3><i class="fa-solid fa-heart-pulse icon-pink"></i> Kita Udah Sama-Sama Dari</h3>
       <div class="counter-grid">
         <div class="counter-item">
           <div class="counter-num" id="cDays">0</div>
@@ -744,7 +745,7 @@ body {
           <div class="counter-label">Detik</div>
         </div>
       </div>
-      <p style="font-family:'Poppins',sans-serif; font-size:0.8rem; color:var(--text-light); margin-top:14px;">Sejak 25 Mei 2025 <i class="fa-solid fa-heart icon-inline icon-pink"></i></p>
+      <p style="font-family:'Poppins',sans-serif; font-size:0.8rem; color:var(--text-light); margin-top:14px;">Dari 25 Mei 2025 <i class="fa-solid fa-heart icon-inline icon-pink"></i></p>
     </div>
 
     <p style="font-family:'Fredoka',sans-serif; color:var(--pink-500); font-size:0.9rem; text-align:center; margin-top:12px;">
