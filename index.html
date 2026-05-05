@@ -260,26 +260,25 @@ body {
    ============================================ */
 .final-screen {
   overflow-y: auto !important;
+  overflow-x: hidden !important;
   -webkit-overflow-scrolling: touch;
   justify-content: flex-start !important;
   align-items: center !important;
-  padding-top: 80px !important;
+  padding-top: 40px !important;
   padding-bottom: 80px !important;
   padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important;
 }
 .final-container {
   max-width: 560px; width:100%;
-  display:flex; flex-direction:column; align-items:center; gap:36px;
+  display:flex; flex-direction:column; align-items:center; gap:24px;
+  position: relative;
 }
 .final-container .bday-title {
   font-family:'Fredoka',sans-serif;
   font-size: 2.4rem;
   text-align:center;
-  background: linear-gradient(135deg, var(--pink-500), var(--pastel-purple));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
-  animation: pulseText 2s ease-in-out infinite;
+  color: var(--pink-500);
+  position: relative;
 }
 @keyframes pulseText {
   0%,100%{transform:scale(1)} 50%{transform:scale(1.03)}
@@ -668,7 +667,11 @@ body {
   <div class="final-container">
 
     <!-- 🎂 Judul Ucapan -->
-    <h1 class="bday-title"><i class="fa-solid fa-cake-candles icon-inline"></i> Happy 18th Birthday, Princess cantikku! <i class="fa-solid fa-cake-candles icon-inline"></i></h1>
+    <h1 class="bday-title">
+      <img style="position:absolute; top:-30px; left:-25px; width:65px; transform:rotate(-15deg); z-index:5; pointer-events:none;" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3aG9sb2V6dzA1NDd0M2ZtNm5manVqMWd2N2cxZXphZTdwdzhjNmg5aSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/c39G3b12cyqmEhOxib/giphy.gif" alt="decor">
+      <img style="position:absolute; bottom:-15px; right:-35px; width:60px; transform:rotate(20deg); z-index:5; pointer-events:none;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXFzZ3NuYnFub3QwaXF5MjViYjUwMHQ2cXZoNDJodm43NjF4MmN4eiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/Wf9dyOrB0nGJn5FIYf/giphy.gif" alt="decor">
+      <i class="fa-solid fa-cake-candles icon-inline"></i> Happy 18th Birthday, Princess cantikku! <i class="fa-solid fa-cake-candles icon-inline"></i>
+    </h1>
 
     <!-- ✏️ EDIT: GIF selebrasi -->
     <img style="max-width:180px; border-radius:16px;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWNlOGl2MmF1eXF1ZWhrYzhjMnpmbDBmZnU0aGR1OGY0OHFwMnk5ciZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/aQuMoDDzHv4AivLPNn/giphy.gif" alt="celebration">
