@@ -265,10 +265,10 @@ body {
 .final-screen {
   overflow-y: auto !important;
   -webkit-overflow-scrolling: touch;
-  align-items: flex-start !important;
-  padding-top: 60px !important;
-  padding-bottom: 60px !important;
-  padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px)) !important;
+  align-items: center !important;
+  padding-top: 80px !important;
+  padding-bottom: 80px !important;
+  padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important;
 }
 .final-container {
   max-width: 560px; width:100%;
@@ -394,72 +394,6 @@ body {
   .msg-card h1{font-size:1.25rem}
   .final-container .bday-title{font-size:1.4rem}
 }
-
-/* ============================================
-   🎵 FLOATING MUSIC PLAYER
-   ============================================ */
-.music-fab {
-  position:fixed;
-  bottom:24px; right:24px;
-  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
-  width:52px; height:52px;
-  border-radius:50%;
-  border:none;
-  background: rgba(255,255,255,0.75);
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
-  box-shadow: 0 8px 28px var(--shadow-pink), 0 0 0 1px rgba(255,255,255,0.5);
-  cursor:pointer;
-  z-index:100;
-  display:flex; align-items:center; justify-content:center;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  opacity:0; pointer-events:none;
-  -webkit-transform: scale(0.8);
-  transform: scale(0.8);
-  -webkit-appearance:none;
-  touch-action:manipulation;
-}
-.music-fab.visible {
-  opacity:1; pointer-events:all; transform:scale(1);
-}
-.music-fab:hover {
-  transform: scale(1.1);
-  box-shadow: 0 12px 35px rgba(232,67,147,0.35);
-}
-.music-fab i {
-  font-size:1.2rem;
-  color: var(--pink-600);
-  transition: transform 0.3s ease;
-}
-.music-fab.playing i { animation: pulse-icon 1.5s ease-in-out infinite; }
-@keyframes pulse-icon {
-  0%,100%{transform:scale(1)} 50%{transform:scale(1.15)}
-}
-.music-fab-label {
-  position:fixed;
-  bottom:30px; right:84px;
-  bottom: calc(30px + env(safe-area-inset-bottom, 0px));
-  background: rgba(255,255,255,0.85);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-family:'Poppins',sans-serif;
-  font-size:0.75rem;
-  color: var(--text-dark);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-  z-index:100;
-  opacity:0; pointer-events:none;
-  -webkit-transition: opacity 0.4s ease;
-  transition: opacity 0.4s ease;
-  white-space:nowrap;
-}
-.music-fab-label.visible { opacity:1; }
-.spotify-hidden-player {
-  position:fixed; bottom:0; left:-9999px;
-  width:0; height:0; opacity:0; pointer-events:none;
-}
 </style>
 </head>
 <body>
@@ -467,16 +401,7 @@ body {
 <!-- 🌧️ Heart Rain Canvas -->
 <canvas id="heartCanvas"></canvas>
 
-<!-- 🎵 Floating Music Player (muncul setelah password benar) -->
-<!-- ✏️ EDIT: Ganti src dengan link embed Spotify lagu kamu -->
-<iframe class="spotify-hidden-player" id="spotifyPlayer"
-  src="https://open.spotify.com/embed/track/0vg4WnUWvze6pBOJDTq99k?utm_source=generator&theme=0"
-  allow="autoplay; clipboard-write; encrypted-media;"
-  loading="lazy"></iframe>
-<button class="music-fab" id="musicFab" onclick="toggleMusic()">
-  <i class="fa-solid fa-play" id="musicIcon"></i>
-</button>
-<div class="music-fab-label" id="musicLabel">Klik untuk putar musik</div>
+
 
 <!-- ============================================
      🔐 SCREEN 1: KEYPAD PASSWORD
@@ -689,7 +614,6 @@ function goTo(id) {
   document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
   setTimeout(() => {
     document.getElementById(id).classList.add("active");
-    if (id === "screenWelcome") showMusicFab();
     if (id === "screenReady") resetNoBtn();
     if (id === "screenFinal") startLetterFadeIn();
   }, 100);
@@ -732,42 +656,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }, {passive: false});
   }
 });
-
-/* ============================================
-   FLOATING MUSIC PLAYER LOGIC
-   ============================================ */
-let musicPlaying = false;
-
-function showMusicFab() {
-  const fab = document.getElementById('musicFab');
-  const label = document.getElementById('musicLabel');
-  fab.classList.add('visible');
-  label.classList.add('visible');
-  setTimeout(() => label.classList.remove('visible'), 4000);
-}
-
-function toggleMusic() {
-  const fab = document.getElementById('musicFab');
-  const icon = document.getElementById('musicIcon');
-  const player = document.getElementById('spotifyPlayer');
-  musicPlaying = !musicPlaying;
-  if (musicPlaying) {
-    const src = player.src;
-    player.style.left = '0';
-    player.style.width = '300px';
-    player.style.height = '80px';
-    player.src = src.includes('&autoplay=1') ? src : src + '&autoplay=1';
-    icon.className = 'fa-solid fa-pause';
-    fab.classList.add('playing');
-  } else {
-    player.src = player.src.replace('&autoplay=1', '');
-    player.style.left = '-9999px';
-    player.style.width = '0';
-    player.style.height = '0';
-    icon.className = 'fa-solid fa-play';
-    fab.classList.remove('playing');
-  }
-}
 
 /* ============================================
    💌 LETTER FADE-IN
