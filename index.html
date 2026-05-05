@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Princess Cantikuu!</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+/* SVG Icon styling */
+.icon { display:inline-flex; align-items:center; justify-content:center; }
+.icon-big { font-size:2.8rem; display:block; text-align:center; margin:12px auto; color:var(--pink-500); }
+.icon-inline { font-size:1em; margin:0 2px; color:var(--pink-500); }
+.icon-pink { color:var(--pink-500); }
+.icon-purple { color:var(--pastel-purple); }
+.icon-rose { color:#ff6b8a; }
+.icon-gold { color:#f9ca24; }
+.icon-green { color:#55efc4; }
+.keypad-gif { max-width:140px; border-radius:16px; margin:0 auto 18px; display:block; }
+/* ============================================
+   🎨 EDIT: Warna tema bisa diubah di sini
+   ============================================ */
+:root {
+  --pink-100: #fff0f5;
+  --pink-200: #ffd6e7;
+  --pink-300: #ffb3d1;
+  --pink-400: #ff8fbf;
+  --pink-500: #ff69a8;
+  --pink-600: #e84393;
+  --pastel-purple: #c9b1ff;
+  --pastel-blue: #a8d8ea;
+  --pastel-yellow: #fff3b0;
+  --white: #ffffff;
+  --text-dark: #4a3040;
+  --text-light: #8b6b7d;
+  --shadow-pink: rgba(232,67,147,0.2);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family:'Fredoka',sans-serif;
+  background: linear-gradient(135deg, var(--pink-100), var(--pink-200), #f0e6ff);
+  min-height:100vh;
+  overflow-x:hidden;
+  color: var(--text-dark);
+}
+
+/* Screen system */
+.screen {
+  position:fixed; inset:0;
+  display:flex; align-items:center; justify-content:center; flex-direction:column;
+  opacity:0; pointer-events:none;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: scale(0.95);
+  z-index:1;
+  padding: 20px;
+}
+.screen.active {
+  opacity:1; pointer-events:all; transform:scale(1); z-index:10;
+}
+
+/* Heart rain canvas */
+#heartCanvas {
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+}
+
+/* ============================================
+   🔐 SCREEN 1: KEYPAD
+   ============================================ */
+.keypad-container {
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(20px);
+  border-radius: 32px;
+  padding: 40px 32px 32px;
+  box-shadow: 0 20px 60px var(--shadow-pink), 0 0 0 1px rgba(255,255,255,0.5);
+  text-align:center;
+  max-width: 380px;
+  width:100%;
+}
+.keypad-container h2 {
+  font-family:'Fredoka',sans-serif;
+  font-size:1.4rem;
+  color: var(--pink-600);
+  margin-bottom:8px;
+}
+.keypad-container p {
+  font-family:'Poppins',sans-serif;
+  font-size:0.85rem;
+  color: var(--text-light);
+  margin-bottom:24px;
+}
+.pin-dots {
+  display:flex; gap:12px; justify-content:center; margin-bottom:28px;
+}
+.pin-dot {
+  width:18px; height:18px; border-radius:50%;
+  border: 2.5px solid var(--pink-400);
+  transition: all 0.3s cubic-bezier(.4,0,.2,1);
+  background: transparent;
+}
+.pin-dot.filled {
+  background: var(--pink-500);
+  border-color: var(--pink-500);
+  transform: scale(1.2);
+  box-shadow: 0 0 12px var(--shadow-pink);
+}
+.pin-dot.error {
+  border-color: #ff4757;
+  background: #ff4757;
+  animation: shake 0.5s ease;
+}
+.keypad-grid {
+  display:grid; grid-template-columns: repeat(3,1fr); gap:12px;
+}
+.key-btn {
+  font-family:'Fredoka',sans-serif;
+  font-size:1.5rem; font-weight:500;
+  width:72px; height:72px;
+  border-radius:50%;
+  border:none;
+  background: linear-gradient(145deg, #fff, var(--pink-100));
+  color: var(--text-dark);
+  cursor:pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+  display:flex; align-items:center; justify-content:center;
+  margin: 0 auto;
+}
+.key-btn:hover {
+  transform: scale(1.1);
+  background: linear-gradient(145deg, var(--pink-200), var(--pink-300));
+  box-shadow: 0 6px 20px var(--shadow-pink);
+}
+.key-btn:active { transform: scale(0.95); }
+.key-btn.del { font-size:1.2rem; background: linear-gradient(145deg, #ffe0ec, var(--pink-200)); }
+
+@keyframes shake {
+  0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-8px)} 40%,80%{transform:translateX(8px)}
+}
+
+/* ============================================
+   💖 SCREEN 2+: MESSAGE SLIDES
+   ============================================ */
+.msg-card {
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(20px);
+  border-radius: 28px;
+  padding: 48px 36px;
+  max-width: 480px;
+  width: 100%;
+  text-align:center;
+  box-shadow: 0 20px 60px var(--shadow-pink);
+  position: relative;
+  overflow: hidden;
+}
+.msg-card::before {
+  content:'';
+  position:absolute; top:-50%; left:-50%; width:200%; height:200%;
+  background: radial-gradient(circle, rgba(255,105,168,0.05) 0%, transparent 70%);
+  animation: rotateBg 10s linear infinite;
+}
+@keyframes rotateBg { to{transform:rotate(360deg)} }
+
+.msg-card h1 {
+  font-family:'Fredoka',sans-serif;
+  font-size: 2rem;
+  color: var(--pink-600);
+  margin-bottom: 16px;
+  position:relative;
+}
+.msg-card .msg-text {
+  font-family:'Poppins',sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-dark);
+  margin-bottom: 24px;
+  position:relative;
+}
+.msg-card img, .msg-card .gif-img {
+  max-width: 200px;
+  border-radius: 16px;
+  margin: 16px auto;
+  display: block;
+}
+
+.btn-next {
+  font-family:'Fredoka',sans-serif;
+  padding: 14px 40px;
+  border:none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, var(--pink-400), var(--pink-600));
+  color:#fff;
+  font-size:1.05rem;
+  font-weight:500;
+  cursor:pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px var(--shadow-pink);
+  position:relative;
+}
+.btn-next:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 35px rgba(232,67,147,0.35);
+}
+
+/* ============================================
+   🤔 ARE YOU READY? - Dodge button
+   ============================================ */
+.btn-yes {
+  padding: 14px 40px;
+  border:none; border-radius:50px;
+  background: linear-gradient(135deg, #a8e6cf, #55efc4);
+  color: #2d6a4f; font-family:'Fredoka',sans-serif;
+  font-size:1.05rem; font-weight:600;
+  cursor:pointer; transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(85,239,196,0.3);
+}
+.btn-yes:hover { transform:translateY(-3px) scale(1.05); }
+.btn-no {
+  padding: 14px 40px;
+  border:none; border-radius:50px;
+  background: linear-gradient(135deg, #ffa0a0, #ff6b6b);
+  color:#fff; font-family:'Fredoka',sans-serif;
+  font-size:1.05rem; font-weight:600;
+  cursor:pointer; transition: all 0.15s ease;
+  box-shadow: 0 6px 20px rgba(255,107,107,0.3);
+  position: absolute;
+}
+
+/* ============================================
+   🎂 FINAL PAGE
+   ============================================ */
+.final-screen {
+  overflow-y: auto !important;
+  align-items: flex-start !important;
+  padding-top: 60px !important;
+  padding-bottom: 60px !important;
+}
+.final-container {
+  max-width: 560px; width:100%;
+  display:flex; flex-direction:column; align-items:center; gap:36px;
+}
+.final-container .bday-title {
+  font-family:'Fredoka',sans-serif;
+  font-size: 2.4rem;
+  text-align:center;
+  background: linear-gradient(135deg, var(--pink-500), var(--pastel-purple));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation: pulseText 2s ease-in-out infinite;
+}
+@keyframes pulseText {
+  0%,100%{transform:scale(1)} 50%{transform:scale(1.03)}
+}
+.final-container .bday-msg {
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(16px);
+  border-radius: 24px;
+  padding: 36px 28px;
+  text-align:center;
+  box-shadow: 0 12px 40px var(--shadow-pink);
+  width:100%;
+}
+.bday-msg p {
+  font-family:'Poppins',sans-serif;
+  font-size:1rem; line-height:1.9;
+  color: var(--text-dark);
+}
+.spotify-section {
+  width:100%;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(16px);
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 12px 40px var(--shadow-pink);
+  text-align:center;
+}
+.spotify-section h3 {
+  font-family:'Fredoka',sans-serif;
+  color: var(--pink-600);
+  margin-bottom: 16px;
+  font-size: 1.3rem;
+}
+.spotify-section iframe {
+  border-radius: 16px;
+  width:100%; max-width:400px;
+}
+.letter-section {
+  width:100%;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(16px);
+  border-radius: 24px;
+  padding: 40px 28px;
+  box-shadow: 0 12px 40px var(--shadow-pink);
+}
+.letter-section h3 {
+  font-family:'Fredoka',sans-serif;
+  color: var(--pink-600);
+  text-align:center;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+}
+.letter-line {
+  font-family:'Poppins',sans-serif;
+  font-size: 0.95rem;
+  line-height: 2;
+  color: var(--text-dark);
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.letter-line.visible {
+  opacity:1; transform:translateY(0);
+}
+.emoji-big { font-size: 3rem; display:block; margin: 12px auto; text-align:center; }
+
+/* Responsive */
+@media(max-width:480px){
+  .keypad-container{padding:28px 20px}
+  .key-btn{width:62px;height:62px;font-size:1.3rem}
+  .msg-card{padding:32px 20px}
+  .msg-card h1{font-size:1.5rem}
+  .final-container .bday-title{font-size:1.8rem}
+}
+
+/* ============================================
+   🎵 FLOATING MUSIC PLAYER
+   ============================================ */
+.music-fab {
+  position:fixed;
+  bottom:24px; right:24px;
+  width:52px; height:52px;
+  border-radius:50%;
+  border:none;
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 8px 28px var(--shadow-pink), 0 0 0 1px rgba(255,255,255,0.5);
+  cursor:pointer;
+  z-index:100;
+  display:flex; align-items:center; justify-content:center;
+  transition: all 0.3s ease;
+  opacity:0; pointer-events:none;
+  transform: scale(0.8);
+}
+.music-fab.visible {
+  opacity:1; pointer-events:all; transform:scale(1);
+}
+.music-fab:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 35px rgba(232,67,147,0.35);
+}
+.music-fab i {
+  font-size:1.2rem;
+  color: var(--pink-600);
+  transition: transform 0.3s ease;
+}
+.music-fab.playing i { animation: pulse-icon 1.5s ease-in-out infinite; }
+@keyframes pulse-icon {
+  0%,100%{transform:scale(1)} 50%{transform:scale(1.15)}
+}
+.music-fab-label {
+  position:fixed;
+  bottom:30px; right:84px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-family:'Poppins',sans-serif;
+  font-size:0.75rem;
+  color: var(--text-dark);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  z-index:100;
+  opacity:0; pointer-events:none;
+  transition: opacity 0.4s ease;
+  white-space:nowrap;
+}
+.music-fab-label.visible { opacity:1; }
+.spotify-hidden-player {
+  position:fixed; bottom:0; left:-9999px;
+  width:0; height:0; opacity:0; pointer-events:none;
+}
+</style>
+</head>
+<body>
+
+<!-- 🌧️ Heart Rain Canvas -->
+<canvas id="heartCanvas"></canvas>
+
+<!-- 🎵 Floating Music Player (muncul setelah password benar) -->
+<!-- ✏️ EDIT: Ganti src dengan link embed Spotify lagu kamu -->
+<iframe class="spotify-hidden-player" id="spotifyPlayer"
+  src="https://open.spotify.com/embed/track/0vg4WnUWvze6pBOJDTq99k?utm_source=generator&theme=0"
+  allow="autoplay; clipboard-write; encrypted-media;"
+  loading="lazy"></iframe>
+<button class="music-fab" id="musicFab" onclick="toggleMusic()">
+  <i class="fa-solid fa-play" id="musicIcon"></i>
+</button>
+<div class="music-fab-label" id="musicLabel">Klik untuk putar musik</div>
+
+<!-- ============================================
+     🔐 SCREEN 1: KEYPAD PASSWORD
+     ✏️ EDIT: Ubah PASSWORD di variabel JS di bawah
+     ============================================ -->
+<div class="screen active" id="screenKeypad">
+  <div class="keypad-container">
+    <img class="keypad-gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWNlOGl2MmF1eXF1ZWhrYzhjMnpmbDBmZnU0aGR1OGY0OHFwMnk5ciZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/ztisqLhP99tVSHG136/giphy.gif" alt="Bubu Dudu">
+    <h2><i class="fa-solid fa-lock icon-pink"></i> Enter Password</h2>
+    <p>Masukkan 6 digit kelahiran mu~</p>
+    <div class="pin-dots" id="pinDots">
+      <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
+      <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
+    </div>
+    <div class="keypad-grid">
+      <button class="key-btn" onclick="pressKey('1')">1</button>
+      <button class="key-btn" onclick="pressKey('2')">2</button>
+      <button class="key-btn" onclick="pressKey('3')">3</button>
+      <button class="key-btn" onclick="pressKey('4')">4</button>
+      <button class="key-btn" onclick="pressKey('5')">5</button>
+      <button class="key-btn" onclick="pressKey('6')">6</button>
+      <button class="key-btn" onclick="pressKey('7')">7</button>
+      <button class="key-btn" onclick="pressKey('8')">8</button>
+      <button class="key-btn" onclick="pressKey('9')">9</button>
+      <button class="key-btn del" onclick="pressKey('del')"><i class="fa-solid fa-delete-left"></i></button>
+      <button class="key-btn" onclick="pressKey('0')">0</button>
+      <button class="key-btn del" onclick="pressKey('clear')"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     💖 SCREEN 2: SAMBUTAN
+     ✏️ EDIT: Ubah teks sambutan & GIF di sini
+     ============================================ -->
+<div class="screen" id="screenWelcome">
+  <div class="msg-card">
+    <div class="icon-big"><i class="fa-solid fa-heart icon-pink"></i></div>
+    <h1>Hi pretty, princess cantiku, cantiku... <i class="fa-solid fa-heart-pulse icon-inline icon-pink"></i></h1>
+    <img class="gif-img" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWNlOGl2MmF1eXF1ZWhrYzhjMnpmbDBmZnU0aGR1OGY0OHFwMnk5ciZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/rrasLFSTyi4Th1e8Xo/giphy.gif" alt="cute gif">
+    <p class="msg-text">Aku punya sesuatu yang spesial buat kamu... siap ya? <i class="fa-solid fa-face-smile-beam icon-inline icon-purple"></i><i class="fa-solid fa-sparkles icon-inline icon-gold"></i></p>
+    <button class="btn-next" onclick="goTo('screenMsg1')">Lanjut <i class="fa-solid fa-envelope-open-text"></i></button>
+  </div>
+</div>
+
+<!-- ============================================
+     💬 SCREEN 3-5: PESAN-PESAN
+     ✏️ EDIT: Ubah isi pesan di masing-masing slide
+     ============================================ -->
+<div class="screen" id="screenMsg1">
+  <div class="msg-card">
+    <img class="gif-img" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWNlOGl2MmF1eXF1ZWhrYzhjMnpmbDBmZnU0aGR1OGY0OHFwMnk5ciZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/eLv7gJpxqiQtbNNQUe/giphy.gif" alt="cat heart">
+    <h1>Kamu Tau Gak?</h1>
+    <p class="msg-text">Dari semua hari dalam setahun, hari lahir kamu adalah hari yang paling aku syukuri. Karena di hari itu, dunia dapet hadiah paling cantik — yaitu kamu. <i class="fa-solid fa-heart icon-inline icon-pink"></i></p>
+    <button class="btn-next" onclick="goTo('screenMsg2')">Lanjut <i class="fa-solid fa-heart icon-inline"></i></button>
+  </div>
+</div>
+
+<div class="screen" id="screenMsg2">
+  <div class="msg-card">
+    <img class="gif-img" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3U2NGJkODNjMmh6YnR4b3RqMno4amJzY2Via3g3emxxemlndDl4NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/W0VuY0dTxH9L6vLUJ2/giphy.gif" alt="Peach Goma">
+    <h1>Serius deh...</h1>
+    <p class="msg-text">Kamu tuh kayak bintang — terang, cantik, dan bikin aku selalu pengen ngeliat kamu setiap malam. Tapi bedanya, kamu lebih nyata dan lebih indah. <i class="fa-solid fa-star icon-inline icon-gold"></i></p>
+    <button class="btn-next" onclick="goTo('screenMsg3')">Lanjut <i class="fa-solid fa-hands-holding-heart icon-inline"></i></button>
+  </div>
+</div>
+
+<div class="screen" id="screenMsg3">
+  <div class="msg-card">
+    <img class="gif-img" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdW1yaGEzcjlkbHFuZXFjazg3eGtxbXB1NTNibXB1bXY0dGF5aHpkaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/BXjqytvu9bKzCUHdzz/giphy.gif" alt="sparkling stars">
+    <h1>Dan yang paling penting...</h1>
+    <p class="msg-text">Aku cuma mau bilang, kamu layak dapet semua kebahagiaan di dunia ini. Karena kamu udah jadi sumber kebahagiaan buat orang-orang di sekitar kamu. <i class="fa-solid fa-heart-circle-check icon-inline icon-pink"></i></p>
+    <button class="btn-next" onclick="goTo('screenReady')">Lanjut <i class="fa-solid fa-gift icon-inline"></i></button>
+  </div>
+</div>
+
+<!-- ============================================
+     🤔 SCREEN 6: ARE YOU READY? (Dodge button)
+     ============================================ -->
+<div class="screen" id="screenReady">
+  <div class="msg-card" style="overflow:visible; min-height:350px; position:relative;">
+    <div class="icon-big"><i class="fa-solid fa-face-grin-hearts icon-pink"></i></div>
+    <h1>Are you ready?</h1>
+    <p class="msg-text">Siap untuk kejutan terbesarnya? <i class="fa-solid fa-wand-magic-sparkles icon-inline icon-purple"></i></p>
+    <div style="display:flex; gap:20px; justify-content:center; margin-top:16px; position:relative;">
+      <button class="btn-yes" onclick="goTo('screenFinal')">Yes! <i class="fa-solid fa-heart icon-inline"></i></button>
+    </div>
+    <button class="btn-no" id="btnNo" onmouseover="dodgeBtn()" ontouchstart="dodgeBtn()">No <i class="fa-solid fa-face-angry"></i></button>
+  </div>
+</div>
+
+<!-- ============================================
+     🎂 SCREEN 7: FINAL - Ucapan, Spotify, Surat
+     ✏️ EDIT: Ubah semua teks ucapan & surat di sini
+     ============================================ -->
+<div class="screen final-screen" id="screenFinal">
+  <div class="final-container">
+
+    <!-- 🎂 Judul Ucapan -->
+    <h1 class="bday-title"><i class="fa-solid fa-cake-candles icon-inline"></i> Happy 18th Birthday, Princess! <i class="fa-solid fa-cake-candles icon-inline"></i></h1>
+
+    <!-- ✏️ EDIT: GIF selebrasi -->
+    <img style="max-width:180px; border-radius:16px;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWNlOGl2MmF1eXF1ZWhrYzhjMnpmbDBmZnU0aGR1OGY0OHFwMnk5ciZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/aQuMoDDzHv4AivLPNn/giphy.gif" alt="celebration">
+
+    <!-- ✏️ EDIT: Ubah isi pesan ulang tahun di bawah -->
+    <div class="bday-msg">
+      <div class="icon-big"><i class="fa-solid fa-party-horn icon-pink" style="font-size:2.5rem;"></i></div>
+      <p>
+        Selamat ulang tahun yang ke-18, sayangku! <i class="fa-solid fa-champagne-glasses icon-inline icon-gold"></i><i class="fa-solid fa-heart icon-inline icon-pink"></i><br><br>
+        Sekarang kamu udah resmi dewasa — tapi tetap jadi princess kecilku yang paling cantik dan paling lucu sedunia. <i class="fa-solid fa-earth-americas icon-inline icon-purple"></i><i class="fa-solid fa-crown icon-inline icon-gold"></i><br><br>
+        Semoga di umur yang baru ini, semua mimpi kamu tercapai, selalu sehat, selalu bahagia, dan selalu tau bahwa ada yang sayang banget sama kamu. <i class="fa-solid fa-heart icon-inline icon-pink"></i>
+      </p>
+    </div>
+
+    <!-- 🎵 Spotify Playlist -->
+    <!-- ✏️ EDIT: Ganti src iframe dengan link embed Spotify kamu -->
+    <div class="spotify-section">
+      <h3><i class="fa-solid fa-music icon-pink"></i> Lagu Spesial Buat Kamu</h3>
+      <iframe
+        style="border-radius:12px"
+        src="https://open.spotify.com/embed/track/0vg4WnUWvze6pBOJDTq99k?utm_source=generator&theme=0"
+        width="100%"
+        height="352"
+        frameBorder="0"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+      </iframe>
+    </div>
+
+    <!-- 💌 Surat Panjang dengan Fade-in -->
+    <!-- ✏️ EDIT: Ubah isi surat di bawah, setiap <p class="letter-line"> = 1 paragraf -->
+    <div class="letter-section" id="letterSection">
+      <h3><i class="fa-solid fa-envelope-open-text icon-pink"></i> Surat Kecil Dari Aku</h3>
+
+      <p class="letter-line">Dear princess cantikku,</p>
+
+      <p class="letter-line">Pertama-tama, aku mau bilang — Happy Birthday! <i class="fa-solid fa-cake-candles icon-inline icon-pink"></i> Ini adalah hari yang paling spesial, dan aku seneng banget bisa jadi bagian dari hari ini.</p>
+
+      <p class="letter-line">Kamu tau gak? Setiap kali aku liat kamu senyum, dunia aku berasa lebih cerah. Kayak matahari yang tiba-tiba muncul setelah hujan. <i class="fa-solid fa-sun icon-inline icon-gold"></i><i class="fa-solid fa-cloud-rain icon-inline icon-purple"></i></p>
+
+      <p class="letter-line">Di umur kamu yang ke-18 ini, aku harap kamu makin percaya diri, makin berani ngejar mimpi, dan makin sayang sama diri sendiri. Karena kamu layak dapet yang terbaik. <i class="fa-solid fa-hand-fist icon-inline icon-rose"></i><i class="fa-solid fa-sparkles icon-inline icon-gold"></i></p>
+
+      <p class="letter-line">Makasih udah jadi orang yang selalu bikin hari-hari aku lebih berwarna. Makasih udah jadi tempat aku cerita, ketawa, dan kadang nangis juga. <i class="fa-solid fa-face-smile-beam icon-inline icon-purple"></i></p>
+
+      <p class="letter-line">Aku janji bakal selalu ada buat kamu, di hari-hari baik maupun hari-hari yang susah. Karena kamu bukan cuma cantik di luar, tapi juga cantik di dalam. <i class="fa-solid fa-heart icon-inline icon-pink"></i></p>
+
+      <p class="letter-line">Jangan pernah berubah jadi orang lain, karena kamu yang sekarang sudah sempurna. Tetap jadi diri kamu yang lucu, baik, dan penuh kasih sayang. <i class="fa-solid fa-clover icon-inline icon-green"></i></p>
+
+      <p class="letter-line">Sekali lagi, Happy 18th Birthday, my princess! Semoga tahun ini jadi tahun terbaik kamu. I'm so proud of you! <i class="fa-solid fa-wand-magic-sparkles icon-inline icon-purple"></i><i class="fa-solid fa-crown icon-inline icon-gold"></i><i class="fa-solid fa-heart icon-inline icon-pink"></i></p>
+
+      <p class="letter-line" style="text-align:right; margin-top:24px;">
+        <strong>With all my love,</strong><br>
+        <!-- ✏️ EDIT: Ganti nama pengirim di bawah -->
+        <em>Dari seseorang yang sayang kamu~ <i class="fa-solid fa-heart icon-inline icon-pink"></i></em>
+      </p>
+    </div>
+
+    <p style="font-family:'Fredoka',sans-serif; color:var(--pink-500); font-size:0.9rem; text-align:center; margin-top:12px;">
+      Made with <i class="fa-solid fa-heart icon-inline icon-pink"></i> just for you
+    </p>
+  </div>
+</div>
+
+<script>
+/* ============================================
+   🔐 KEYPAD LOGIC
+   ✏️ EDIT: Ubah password di sini
+   ============================================ */
+const CORRECT_PIN = "060508";
+let currentPin = "";
+
+function pressKey(key) {
+  if (key === "del") {
+    currentPin = currentPin.slice(0, -1);
+  } else if (key === "clear") {
+    currentPin = "";
+  } else if (currentPin.length < 6) {
+    currentPin += key;
+  }
+  updateDots();
+  if (currentPin.length === 6) {
+    setTimeout(() => {
+      if (currentPin === CORRECT_PIN) {
+        goTo("screenWelcome");
+      } else {
+        const dots = document.querySelectorAll(".pin-dot");
+        dots.forEach(d => { d.classList.add("error"); });
+        setTimeout(() => {
+          currentPin = "";
+          updateDots();
+          dots.forEach(d => d.classList.remove("error"));
+        }, 600);
+      }
+    }, 300);
+  }
+}
+
+function updateDots() {
+  const dots = document.querySelectorAll(".pin-dot");
+  dots.forEach((d, i) => {
+    d.classList.toggle("filled", i < currentPin.length);
+  });
+}
+
+/* ============================================
+   🚀 SCREEN NAVIGATION
+   ============================================ */
+function goTo(id) {
+  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+  setTimeout(() => {
+    document.getElementById(id).classList.add("active");
+    if (id === "screenWelcome") showMusicFab();
+    if (id === "screenReady") resetNoBtn();
+    if (id === "screenFinal") startLetterFadeIn();
+  }, 100);
+}
+
+/* ============================================
+   🏃 DODGE BUTTON LOGIC
+   ============================================ */
+function resetNoBtn() {
+  const btn = document.getElementById("btnNo");
+  const card = btn.closest(".msg-card");
+  btn.style.left = "60%";
+  btn.style.top = "75%";
+}
+
+function dodgeBtn() {
+  const btn = document.getElementById("btnNo");
+  const card = btn.closest(".msg-card");
+  const cw = card.offsetWidth, ch = card.offsetHeight;
+  const bw = btn.offsetWidth, bh = btn.offsetHeight;
+  const rx = Math.random() * (cw - bw - 20) + 10;
+  const ry = Math.random() * (ch - bh - 20) + 10;
+  btn.style.left = rx + "px";
+  btn.style.top = ry + "px";
+}
+
+/* ============================================
+   FLOATING MUSIC PLAYER LOGIC
+   ============================================ */
+let musicPlaying = false;
+
+function showMusicFab() {
+  const fab = document.getElementById('musicFab');
+  const label = document.getElementById('musicLabel');
+  fab.classList.add('visible');
+  label.classList.add('visible');
+  setTimeout(() => label.classList.remove('visible'), 4000);
+}
+
+function toggleMusic() {
+  const fab = document.getElementById('musicFab');
+  const icon = document.getElementById('musicIcon');
+  const player = document.getElementById('spotifyPlayer');
+  musicPlaying = !musicPlaying;
+  if (musicPlaying) {
+    const src = player.src;
+    player.style.left = '0';
+    player.style.width = '300px';
+    player.style.height = '80px';
+    player.src = src.includes('&autoplay=1') ? src : src + '&autoplay=1';
+    icon.className = 'fa-solid fa-pause';
+    fab.classList.add('playing');
+  } else {
+    player.src = player.src.replace('&autoplay=1', '');
+    player.style.left = '-9999px';
+    player.style.width = '0';
+    player.style.height = '0';
+    icon.className = 'fa-solid fa-play';
+    fab.classList.remove('playing');
+  }
+}
+
+/* ============================================
+   💌 LETTER FADE-IN
+   ============================================ */
+function startLetterFadeIn() {
+  const lines = document.querySelectorAll(".letter-line");
+  lines.forEach((line, i) => {
+    setTimeout(() => line.classList.add("visible"), 400 * (i + 1));
+  });
+}
+
+/* ============================================
+   🌧️ HEART RAIN ANIMATION
+   ============================================ */
+const canvas = document.getElementById("heartCanvas");
+const ctx = canvas.getContext("2d");
+let hearts = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+function createHeart() {
+  return {
+    x: Math.random() * canvas.width,
+    y: -20,
+    size: Math.random() * 14 + 8,
+    speed: Math.random() * 1.5 + 0.5,
+    opacity: Math.random() * 0.4 + 0.15,
+    wobble: Math.random() * 2 - 1,
+    rotation: Math.random() * Math.PI * 2,
+    color: ["#ff69a8","#ffb3d1","#c9b1ff","#ff8fbf","#ffd6e7"][Math.floor(Math.random()*5)]
+  };
+}
+
+function drawHeart(h) {
+  ctx.save();
+  ctx.translate(h.x, h.y);
+  ctx.rotate(h.rotation);
+  ctx.globalAlpha = h.opacity;
+  ctx.fillStyle = h.color;
+  ctx.beginPath();
+  const s = h.size / 15;
+  ctx.moveTo(0, -3 * s);
+  ctx.bezierCurveTo(-5*s, -15*s, -22*s, -8*s, 0, 10*s);
+  ctx.moveTo(0, -3 * s);
+  ctx.bezierCurveTo(5*s, -15*s, 22*s, -8*s, 0, 10*s);
+  ctx.fill();
+  ctx.restore();
+}
+
+function animateHearts() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  if (hearts.length < 35) hearts.push(createHeart());
+  hearts.forEach((h, i) => {
+    h.y += h.speed;
+    h.x += Math.sin(h.y * 0.01) * h.wobble;
+    h.rotation += 0.005;
+    drawHeart(h);
+    if (h.y > canvas.height + 20) hearts[i] = createHeart();
+  });
+  requestAnimationFrame(animateHearts);
+}
+animateHearts();
+</script>
+</body>
+</html>
