@@ -289,6 +289,7 @@ body {
   0%,100%{transform:scale(1)} 50%{transform:scale(1.03)}
 }
 .final-container .bday-msg {
+  position: relative;
   background: rgba(255,255,255,0.8);
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
@@ -329,6 +330,7 @@ body {
   width:100%; max-width:400px;
 }
 .letter-section {
+  position: relative;
   width:100%;
   background: rgba(255,255,255,0.85);
   -webkit-backdrop-filter: blur(16px);
@@ -673,6 +675,8 @@ body {
 
     <!-- ✏️ EDIT: Ubah isi pesan ulang tahun di bawah -->
     <div class="bday-msg">
+      <img style="position:absolute; top:-20px; left:-10px; width:65px; transform:rotate(-15deg); z-index:10; border-radius:12px; pointer-events:none;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3U2NGJkODNjMmh6YnR4b3RqMno4amJzY2Via3g3emxxemlndDl4NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/W0VuY0dTxH9L6vLUJ2/giphy.gif" alt="cute hug">
+      <img style="position:absolute; bottom:-15px; right:-15px; width:70px; transform:rotate(10deg); z-index:10; border-radius:12px; pointer-events:none;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWNlOGl2MmF1eXF1ZWhrYzhjMnpmbDBmZnU0aGR1OGY0OHFwMnk5ciZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/ztisqLhP99tVSHG136/giphy.gif" alt="bubu dudu">
       <div class="icon-big"><i class="fa-solid fa-party-horn icon-pink" style="font-size:2.5rem;"></i></div>
       <p>
         Selamat ulang tahun yang ke-18, sayangku! <i class="fa-solid fa-champagne-glasses icon-inline icon-gold"></i><i class="fa-solid fa-heart icon-inline icon-pink"></i><br><br>
@@ -700,6 +704,9 @@ body {
     <!-- 💌 Surat Panjang dengan Fade-in -->
     <!-- ✏️ EDIT: Ubah isi surat di bawah, setiap <p class="letter-line"> = 1 paragraf -->
     <div class="letter-section" id="letterSection">
+      <img style="position:absolute; top:20px; right:10px; width:70px; transform:rotate(12deg); z-index:10; border-radius:12px; pointer-events:none;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWNlOGl2MmF1eXF1ZWhrYzhjMnpmbDBmZnU0aGR1OGY0OHFwMnk5ciZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/eLv7gJpxqiQtbNNQUe/giphy.gif" alt="cat heart">
+      <img style="position:absolute; bottom:60px; left:10px; width:75px; transform:rotate(-8deg); z-index:10; border-radius:12px; pointer-events:none;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWNlOGl2MmF1eXF1ZWhrYzhjMnpmbDBmZnU0aGR1OGY0OHFwMnk5ciZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/rrasLFSTyi4Th1e8Xo/giphy.gif" alt="cat wag">
+      
       <h3><i class="fa-solid fa-envelope-open-text icon-pink"></i> Surat Kecil Dari Aku xixixi</h3>
 
       <p class="letter-line">Dear princess cantikku, ASEK</p>
@@ -749,13 +756,6 @@ body {
       <p style="font-family:'Poppins',sans-serif; font-size:0.8rem; color:var(--text-light); margin-top:14px;">Dari 25 Mei 2025 <i class="fa-solid fa-heart icon-inline icon-pink"></i></p>
     </div>
 
-    <!-- 🎁 EXTRA GIFS DI AKHIR HALAMAN -->
-    <div style="display:flex; justify-content:center; gap:16px; margin-top:20px; margin-bottom:10px; flex-wrap:wrap;">
-      <img style="max-width:90px; border-radius:12px; box-shadow: 0 4px 12px rgba(255,105,168,0.2);" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3U2NGJkODNjMmh6YnR4b3RqMno4amJzY2Via3g3emxxemlndDl4NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/W0VuY0dTxH9L6vLUJ2/giphy.gif" alt="cute hug">
-      <img style="max-width:90px; border-radius:12px; box-shadow: 0 4px 12px rgba(255,105,168,0.2);" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWNlOGl2MmF1eXF1ZWhrYzhjMnpmbDBmZnU0aGR1OGY0OHFwMnk5ciZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/ztisqLhP99tVSHG136/giphy.gif" alt="bubu dudu">
-      <img style="max-width:90px; border-radius:12px; box-shadow: 0 4px 12px rgba(255,105,168,0.2);" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWNlOGl2MmF1eXF1ZWhrYzhjMnpmbDBmZnU0aGR1OGY0OHFwMnk5ciZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/eLv7gJpxqiQtbNNQUe/giphy.gif" alt="cat heart">
-      <img style="max-width:90px; border-radius:12px; box-shadow: 0 4px 12px rgba(255,105,168,0.2);" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWNlOGl2MmF1eXF1ZWhrYzhjMnpmbDBmZnU0aGR1OGY0OHFwMnk5ciZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/rrasLFSTyi4Th1e8Xo/giphy.gif" alt="cat wag">
-    </div>
 
     <p style="font-family:'Fredoka',sans-serif; color:var(--pink-500); font-size:0.9rem; text-align:center; margin-top:12px;">
       Made with <i class="fa-solid fa-heart icon-inline icon-pink"></i> just for you
