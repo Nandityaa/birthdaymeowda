@@ -311,6 +311,7 @@ body {
   backdrop-filter: blur(16px);
   border-radius: 24px;
   padding: 28px;
+  margin-bottom: 24px;
   box-shadow: 0 12px 40px var(--shadow-pink);
   text-align:center;
   -webkit-transform: translateZ(0);
@@ -331,11 +332,17 @@ body {
   background: rgba(255,255,255,0.85);
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
-  border-radius: 24px;
-  padding: 40px 28px;
-  box-shadow: 0 12px 40px var(--shadow-pink);
+  border-radius: 30px;
+  padding: 40px 28px 100px 28px;
+  padding-bottom: calc(100px + env(safe-area-inset-bottom, 0px));
+  box-shadow: 0 10px 30px rgba(232, 67, 147, 0.08), 0 4px 12px rgba(0,0,0,0.02);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+  max-height: 60vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
 }
 .letter-section h3 {
   font-family:'Fredoka',sans-serif;
@@ -535,7 +542,7 @@ body {
   <div class="keypad-container">
     <img class="keypad-gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWNlOGl2MmF1eXF1ZWhrYzhjMnpmbDBmZnU0aGR1OGY0OHFwMnk5ciZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/ztisqLhP99tVSHG136/giphy.gif" alt="Bubu Dudu">
     <h2><i class="fa-solid fa-lock icon-pink"></i> Enter Password</h2>
-    <p>Masukkan 6 digit kelahiran mu~</p>
+    <p>Masukkan pin sesuai tanggal kelahiran mu~</p>
     <div class="pin-dots" id="pinDots">
       <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
       <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
@@ -564,9 +571,9 @@ body {
 <div class="screen" id="screenWelcome">
   <div class="msg-card">
     <div class="icon-big"><i class="fa-solid fa-heart icon-pink"></i></div>
-    <h1>Hi pretty, princess cantiku, cantiku... <i class="fa-solid fa-heart-pulse icon-inline icon-pink"></i></h1>
+    <h1>Hi princess cantiku. <i class="fa-solid fa-heart-pulse icon-inline icon-pink"></i></h1>
     <img class="gif-img" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWNlOGl2MmF1eXF1ZWhrYzhjMnpmbDBmZnU0aGR1OGY0OHFwMnk5ciZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/rrasLFSTyi4Th1e8Xo/giphy.gif" alt="cute gif">
-    <p class="msg-text">Aku punya sesuatu yang spesial buat kamu... siap ya? <i class="fa-solid fa-face-smile-beam icon-inline icon-purple"></i><i class="fa-solid fa-sparkles icon-inline icon-gold"></i></p>
+    <p class="msg-text">Aku punya sesuatu yang spesial buat camu... <i class="fa-solid fa-face-smile-beam icon-inline icon-purple"></i><i class="fa-solid fa-sparkles icon-inline icon-gold"></i></p>
     <button class="btn-next" onclick="goTo('screenMsg1')">Lanjut <i class="fa-solid fa-envelope-open-text"></i></button>
   </div>
 </div>
@@ -578,17 +585,17 @@ body {
 <div class="screen" id="screenMsg1">
   <div class="msg-card">
     <img class="gif-img" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWNlOGl2MmF1eXF1ZWhrYzhjMnpmbDBmZnU0aGR1OGY0OHFwMnk5ciZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/eLv7gJpxqiQtbNNQUe/giphy.gif" alt="cat heart">
-    <h1>Kamu Tau Gak?</h1>
-    <p class="msg-text">Dari semua hari dalam setahun, hari lahir kamu adalah hari yang paling aku syukuri. Karena di hari itu, dunia dapet hadiah paling cantik — yaitu kamu. <i class="fa-solid fa-heart icon-inline icon-pink"></i></p>
+    <h1>Kamu Tau ndaa?</h1>
+    <p class="msg-text">Dari semua hari dalam setahun, hari lahir kamu adalah hari yang paling aku tunggu-tunggu. Karena di hari itu dunia ini dapet hadiah paling cantik, yaitu camuuuu. <i class="fa-solid fa-heart icon-inline icon-pink"></i></p>
     <button class="btn-next" onclick="goTo('screenMsg2')">Lanjut <i class="fa-solid fa-heart icon-inline"></i></button>
   </div>
 </div>
 
 <div class="screen" id="screenMsg2">
   <div class="msg-card">
-    <img class="gif-img" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3U2NGJkODNjMmh6YnR4b3RqMno4amJzY2Via3g3emxxemlndDl4NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/W0VuY0dTxH9L6vLUJ2/giphy.gif" alt="Peach Goma">
-    <h1>Serius deh...</h1>
-    <p class="msg-text">Kamu tuh kayak bintang — terang, cantik, dan bikin aku selalu pengen ngeliat kamu setiap malam. Tapi bedanya, kamu lebih nyata dan lebih indah. <i class="fa-solid fa-star icon-inline icon-gold"></i></p>
+    <img class="gif-img" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3OHBnMDd4YXZiNnhyYzY4OW50cnV1MjAwM2J3ajJqODYxNGtkYzl4MSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/XUA7ZZcBl0McuVqwd8/giphy.gif" alt="Peach Goma">
+    <h1>Serius nii yaa...</h1>
+    <p class="msg-text">Kamu tu kyk anggapan nya bintang,terang, cantik, dan bikin aku selalu pengen ngeliat dan nemenin kamu setiap malam. Tapi bedanyaaa, kamu lebih nyata dan lebih indah pastinyaaa. <i class="fa-solid fa-star icon-inline icon-gold"></i></p>
     <button class="btn-next" onclick="goTo('screenMsg3')">Lanjut <i class="fa-solid fa-hands-holding-heart icon-inline"></i></button>
   </div>
 </div>
@@ -596,8 +603,8 @@ body {
 <div class="screen" id="screenMsg3">
   <div class="msg-card">
     <img class="gif-img" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3aGFuem56eWo5OHRwOHM2ZnJtcDJndncxZXN0bGJlYW5pZXRlNno5eiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/kFNMjs5smJvpKJnxuA/giphy.gif" alt="sparkling stars">
-    <h1>Dan yang paling penting...</h1>
-    <p class="msg-text">Aku cuma mau bilang, kamu layak dapet semua kebahagiaan di dunia ini. Karena kamu udah jadi sumber kebahagiaan buat orang-orang di sekitar kamu. <i class="fa-solid fa-heart-circle-check icon-inline icon-pink"></i></p>
+    <h1>Dan yang paling penting..</h1>
+    <p class="msg-text">Aku cuma mau bilang, kamu layak cekaliii dapet semua kebahagiaan di dunia ini. Karena kamu udah jadi sumber kebahagiaan buat orang-orang di sekitar kamu, termasuk acuuu. <i class="fa-solid fa-heart-circle-check icon-inline icon-pink"></i></p>
     <button class="btn-next" onclick="goTo('screenGallery')">Lanjut <i class="fa-solid fa-gift icon-inline"></i></button>
   </div>
 </div>
@@ -614,19 +621,19 @@ body {
     <div class="gallery-grid">
       <!-- ✏️ EDIT: Ganti src dengan URL foto kalian berdua -->
       <div class="polaroid" style="--rot:-3deg">
-        <div class="gallery-placeholder"><i class="fa-solid fa-image"></i></div>
+        <img src="Foto pertama.jpg" alt="Foto pertama kita">
         <div class="caption">Foto pertama kita</div>
       </div>
       <div class="polaroid" style="--rot:2deg">
-        <div class="gallery-placeholder"><i class="fa-solid fa-image"></i></div>
-        <div class="caption">Jalan bareng</div>
+        <img src="Jalan pertama.jpg" alt="Jalan bareng">
+        <div class="caption">Jalan bareng pertama kalinya (tasnya kebuka)</div>
       </div>
       <div class="polaroid" style="--rot:1.5deg">
-        <div class="gallery-placeholder"><i class="fa-solid fa-image"></i></div>
+        <img src="lucu.jpeg" alt="Momen lucu">
         <div class="caption">Momen lucu</div>
       </div>
       <div class="polaroid" style="--rot:-2deg">
-        <div class="gallery-placeholder"><i class="fa-solid fa-image"></i></div>
+        <img src="foto favorit.jpeg" alt="Favorit aku">
         <div class="caption">Favorit aku</div>
       </div>
     </div>
