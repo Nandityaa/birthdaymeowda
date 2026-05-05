@@ -265,12 +265,12 @@ body {
   justify-content: flex-start !important;
   align-items: center !important;
   padding-top: 40px !important;
-  padding-bottom: 80px !important;
-  padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important;
+  padding-bottom: 140px !important;
+  padding-bottom: calc(140px + env(safe-area-inset-bottom, 0px)) !important;
 }
 .final-container {
   max-width: 560px; width:100%;
-  display:flex; flex-direction:column; align-items:center; gap:24px;
+  display:flex; flex-direction:column; align-items:center; gap:48px;
   position: relative;
 }
 .final-container .bday-title {
@@ -436,15 +436,23 @@ body {
    ============================================ */
 .love-counter {
   width:100%;
-  background: rgba(255,255,255,0.8);
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
-  border-radius: 24px;
+  background: rgba(255,255,255,0.7);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-radius: 40px;
   padding: 32px 24px;
-  box-shadow: 0 12px 40px var(--shadow-pink);
+  box-shadow: 0 12px 40px rgba(232, 67, 147, 0.08);
   text-align:center;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+}
+
+.decor-gif {
+  animation: floatFade 3s ease-in-out infinite alternate;
+}
+@keyframes floatFade {
+  0% { transform: translateY(0px) rotate(var(--rot, 0deg)); opacity: 0.8; }
+  100% { transform: translateY(-10px) rotate(var(--rot, 0deg)); opacity: 1; }
 }
 .love-counter h3 {
   font-family:'Fredoka',sans-serif;
@@ -620,22 +628,22 @@ body {
     <div class="gallery-grid">
       <!-- ✏️ EDIT: Ganti src dengan URL foto kalian berdua -->
       <div class="polaroid" style="--rot:-3deg; position:relative;">
-        <img class="decor-gif" style="position:absolute; top:-15px; left:-15px; width:50px; transform:rotate(-10deg); z-index:5; pointer-events:none; background:transparent;" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3aG9sb2V6dzA1NDd0M2ZtNm5manVqMWd2N2cxZXphZTdwdzhjNmg5aSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/c39G3b12cyqmEhOxib/giphy.gif" alt="decor">
+        <img class="decor-gif" style="position:absolute; top:-15px; left:-15px; width:50px; --rot:-10deg; z-index:5; pointer-events:none; background:transparent;" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3aG9sb2V6dzA1NDd0M2ZtNm5manVqMWd2N2cxZXphZTdwdzhjNmg5aSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/c39G3b12cyqmEhOxib/giphy.gif" alt="decor">
         <img class="photo" src="Foto pertama.jpg" alt="Foto pertama kita">
         <div class="caption">Foto pertama kita</div>
       </div>
       <div class="polaroid" style="--rot:2deg; position:relative;">
-        <img class="decor-gif" style="position:absolute; bottom:-10px; right:-15px; width:55px; transform:rotate(15deg); z-index:5; pointer-events:none; background:transparent;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXFzZ3NuYnFub3QwaXF5MjViYjUwMHQ2cXZoNDJodm43NjF4MmN4eiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/Wf9dyOrB0nGJn5FIYf/giphy.gif" alt="decor">
+        <img class="decor-gif" style="position:absolute; bottom:-10px; right:-15px; width:55px; --rot:15deg; z-index:5; pointer-events:none; background:transparent;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXFzZ3NuYnFub3QwaXF5MjViYjUwMHQ2cXZoNDJodm43NjF4MmN4eiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/Wf9dyOrB0nGJn5FIYf/giphy.gif" alt="decor">
         <img class="photo" src="Jalan pertama.jpg" alt="Jalan bareng">
         <div class="caption">Jalan bareng pertama kalinya (tasnya kebuka)</div>
       </div>
       <div class="polaroid" style="--rot:1.5deg; position:relative;">
-        <img class="decor-gif" style="position:absolute; top:-15px; right:-10px; width:50px; transform:rotate(10deg); z-index:5; pointer-events:none; background:transparent;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXFzZ3NuYnFub3QwaXF5MjViYjUwMHQ2cXZoNDJodm43NjF4MmN4eiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/Xr9TlAqw3S7VPOrftK/giphy.gif" alt="decor">
+        <img class="decor-gif" style="position:absolute; top:-15px; right:-10px; width:50px; --rot:10deg; z-index:5; pointer-events:none; background:transparent;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXFzZ3NuYnFub3QwaXF5MjViYjUwMHQ2cXZoNDJodm43NjF4MmN4eiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/Xr9TlAqw3S7VPOrftK/giphy.gif" alt="decor">
         <img class="photo" src="lucu.jpeg" alt="Momen lucu">
         <div class="caption">Momen lucu (fresh)</div>
       </div>
       <div class="polaroid" style="--rot:-2deg; position:relative;">
-        <img class="decor-gif" style="position:absolute; bottom:-10px; left:-10px; width:55px; transform:rotate(-15deg); z-index:5; pointer-events:none; background:transparent;" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3MjZlcTMwM29oMnB4dDBueXp6cTViNDluZ21idm82ZTRheng3YnBmeiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/qxQa0C2zs1iUmriUXt/giphy.gif" alt="decor">
+        <img class="decor-gif" style="position:absolute; bottom:-10px; left:-10px; width:55px; --rot:-15deg; z-index:5; pointer-events:none; background:transparent;" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3MjZlcTMwM29oMnB4dDBueXp6cTViNDluZ21idm82ZTRheng3YnBmeiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/qxQa0C2zs1iUmriUXt/giphy.gif" alt="decor">
         <img class="photo" src="foto favorit.jpeg" alt="Favorit aku">
         <div class="caption">Favorit aku</div>
       </div>
@@ -668,18 +676,18 @@ body {
 
     <!-- 🎂 Judul Ucapan -->
     <h1 class="bday-title">
-      <img style="position:absolute; top:-30px; left:-25px; width:65px; transform:rotate(-15deg); z-index:5; pointer-events:none;" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3aG9sb2V6dzA1NDd0M2ZtNm5manVqMWd2N2cxZXphZTdwdzhjNmg5aSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/c39G3b12cyqmEhOxib/giphy.gif" alt="decor">
-      <img style="position:absolute; bottom:-15px; right:-35px; width:60px; transform:rotate(20deg); z-index:5; pointer-events:none;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXFzZ3NuYnFub3QwaXF5MjViYjUwMHQ2cXZoNDJodm43NjF4MmN4eiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/Wf9dyOrB0nGJn5FIYf/giphy.gif" alt="decor">
+      <img class="decor-gif" style="position:absolute; top:-30px; left:-25px; width:65px; --rot:-15deg; z-index:5; pointer-events:none;" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3aG9sb2V6dzA1NDd0M2ZtNm5manVqMWd2N2cxZXphZTdwdzhjNmg5aSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/c39G3b12cyqmEhOxib/giphy.gif" alt="decor">
+      <img class="decor-gif" style="position:absolute; bottom:-15px; right:-35px; width:60px; --rot:20deg; z-index:5; pointer-events:none;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXFzZ3NuYnFub3QwaXF5MjViYjUwMHQ2cXZoNDJodm43NjF4MmN4eiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/Wf9dyOrB0nGJn5FIYf/giphy.gif" alt="decor">
       <i class="fa-solid fa-cake-candles icon-inline"></i> Happy 18th Birthday, Princess cantikku! <i class="fa-solid fa-cake-candles icon-inline"></i>
     </h1>
 
     <!-- ✏️ EDIT: GIF selebrasi -->
-    <img style="max-width:180px; border-radius:16px;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWNlOGl2MmF1eXF1ZWhrYzhjMnpmbDBmZnU0aGR1OGY0OHFwMnk5ciZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/aQuMoDDzHv4AivLPNn/giphy.gif" alt="celebration">
+    <img class="decor-gif" style="max-width:180px; border-radius:16px;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWNlOGl2MmF1eXF1ZWhrYzhjMnpmbDBmZnU0aGR1OGY0OHFwMnk5ciZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/aQuMoDDzHv4AivLPNn/giphy.gif" alt="celebration">
 
     <!-- ✏️ EDIT: Ubah isi pesan ulang tahun di bawah -->
     <div class="bday-msg">
-      <img style="position:absolute; top:-20px; left:-10px; width:65px; transform:rotate(-15deg); z-index:10; border-radius:12px; pointer-events:none;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3U2NGJkODNjMmh6YnR4b3RqMno4amJzY2Via3g3emxxemlndDl4NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/W0VuY0dTxH9L6vLUJ2/giphy.gif" alt="cute hug">
-      <img style="position:absolute; bottom:-15px; right:-15px; width:70px; transform:rotate(10deg); z-index:10; border-radius:12px; pointer-events:none;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWNlOGl2MmF1eXF1ZWhrYzhjMnpmbDBmZnU0aGR1OGY0OHFwMnk5ciZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/ztisqLhP99tVSHG136/giphy.gif" alt="bubu dudu">
+      <img class="decor-gif" style="position:absolute; top:-20px; left:-10px; width:65px; --rot:-15deg; z-index:10; border-radius:12px; pointer-events:none;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3U2NGJkODNjMmh6YnR4b3RqMno4amJzY2Via3g3emxxemlndDl4NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/W0VuY0dTxH9L6vLUJ2/giphy.gif" alt="cute hug">
+      <img class="decor-gif" style="position:absolute; bottom:-15px; right:-15px; width:70px; --rot:10deg; z-index:10; border-radius:12px; pointer-events:none;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWNlOGl2MmF1eXF1ZWhrYzhjMnpmbDBmZnU0aGR1OGY0OHFwMnk5ciZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/ztisqLhP99tVSHG136/giphy.gif" alt="bubu dudu">
       <div class="icon-big"><i class="fa-solid fa-party-horn icon-pink" style="font-size:2.5rem;"></i></div>
       <p>
         Selamat ulang tahun yang ke-18, sayangku! <i class="fa-solid fa-champagne-glasses icon-inline icon-gold"></i><i class="fa-solid fa-heart icon-inline icon-pink"></i><br><br>
@@ -706,7 +714,11 @@ body {
 
     <!-- 💌 Surat Panjang dengan Fade-in -->
     <!-- ✏️ EDIT: Ubah isi surat di bawah, setiap <p class="letter-line"> = 1 paragraf -->
-    <div class="letter-section" id="letterSection">
+    <div class="letter-section" id="letterSection" style="position:relative;">
+      <!-- GIFs peeking from the top edge -->
+      <img class="decor-gif" style="position:absolute; top:-35px; left:20px; width:70px; --rot:-15deg; z-index:10; pointer-events:none;" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3aG9sb2V6dzA1NDd0M2ZtNm5manVqMWd2N2cxZXphZTdwdzhjNmg5aSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/c39G3b12cyqmEhOxib/giphy.gif" alt="gif 1">
+      <img class="decor-gif" style="position:absolute; top:-30px; right:30px; width:65px; --rot:10deg; z-index:10; pointer-events:none;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXFzZ3NuYnFub3QwaXF5MjViYjUwMHQ2cXZoNDJodm43NjF4MmN4eiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/Wf9dyOrB0nGJn5FIYf/giphy.gif" alt="gif 2">
+      
       <h3><i class="fa-solid fa-envelope-open-text icon-pink"></i> Surat Kecil Dari Aku xixixi</h3>
 
       <p class="letter-line">Dear princess cantikku, ASEK</p>
@@ -725,18 +737,22 @@ body {
 
       <p class="letter-line">Sekali lagi, Happy 18th Birthday, princess cantikuu! Semoga tahun ini dan tahun tahun berikutnya juga jadi tahun terbaik kamu. I'm so proud of you! <i class="fa-solid fa-wand-magic-sparkles icon-inline icon-purple"></i><i class="fa-solid fa-crown icon-inline icon-gold"></i><i class="fa-solid fa-heart icon-inline icon-pink"></i></p>
 
-      <p class="letter-line" style="text-align:right; margin-top:24px; position:relative;">
-        <img style="position:absolute; top:-40px; left:10px; width:75px; transform:rotate(-8deg); pointer-events:none;" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3MjZlcTMwM29oMnB4dDBueXp6cTViNDluZ21idm82ZTRheng3YnBmeiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/TO9W9aU5zRWWKd4RWJ/giphy.gif" alt="cat">
+      <p class="letter-line" style="text-align:right; margin-top:32px; position:relative;">
+        <img class="decor-gif" style="position:absolute; bottom:-10px; left:10px; width:75px; --rot:-8deg; pointer-events:none;" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3MjZlcTMwM29oMnB4dDBueXp6cTViNDluZ21idm82ZTRheng3YnBmeiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/TO9W9aU5zRWWKd4RWJ/giphy.gif" alt="cat">
         <strong>With all my love,</strong><br>
         <!-- ✏️ EDIT: Ganti nama pengirim di bawah -->
         <em>Dari Bubub Akai~ <i class="fa-solid fa-heart icon-inline icon-pink"></i></em>
       </p>
+      
+      <!-- GIFs peeking from the bottom edge -->
+      <img class="decor-gif" style="position:absolute; bottom:-25px; right:15px; width:70px; --rot:8deg; z-index:10; pointer-events:none;" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3bWVmMmFhMmp1MDU0NzlsZmhxa3B5em5zOGJ3ZGM3ZGt5ejkxcHd0diZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/BzlaZNAGIfemWcnDQC/giphy.gif" alt="gif 6">
+      <img class="decor-gif" style="position:absolute; bottom:-20px; left:-10px; width:75px; --rot:-10deg; z-index:10; pointer-events:none;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWNlOGl2MmF1eXF1ZWhrYzhjMnpmbDBmZnU0aGR1OGY0OHFwMnk5ciZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/rrasLFSTyi4Th1e8Xo/giphy.gif" alt="cat wag">
     </div>
 
     <!-- ✏️ EDIT: Counter Waktu Jadian (tanggal mulai: 25 Mei 2025) -->
     <div class="love-counter" style="position:relative;">
-      <img style="position:absolute; top:-35px; right:-15px; width:80px; transform:rotate(12deg); pointer-events:none; z-index:10;" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3bWVmMmFhMmp1MDU0NzlsZmhxa3B5em5zOGJ3ZGM3ZGt5ejkxcHd0diZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/BzlaZNAGIfemWcnDQC/giphy.gif" alt="hug">
-      <img style="position:absolute; bottom:-25px; left:-20px; width:75px; transform:rotate(-15deg); pointer-events:none; z-index:10;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWNlOGl2MmF1eXF1ZWhrYzhjMnpmbDBmZnU0aGR1OGY0OHFwMnk5ciZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/eLv7gJpxqiQtbNNQUe/giphy.gif" alt="cat heart">
+      <!-- GIF duduk di atas box counter -->
+      <img class="decor-gif" style="position:absolute; top:-45px; left:50%; margin-left:-35px; width:70px; z-index:10; pointer-events:none;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXFzZ3NuYnFub3QwaXF5MjViYjUwMHQ2cXZoNDJodm43NjF4MmN4eiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/Xr9TlAqw3S7VPOrftK/giphy.gif" alt="dance">
       
       <h3><i class="fa-solid fa-heart-pulse icon-pink"></i> Kita Udah Sama-Sama Dari</h3>
       <div class="counter-grid">
