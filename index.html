@@ -270,7 +270,7 @@ body {
 }
 .final-container {
   max-width: 560px; width:100%;
-  display:flex; flex-direction:column; align-items:center; gap:64px;
+  display:flex; flex-direction:column; align-items:center; gap:32px;
   position: relative;
 }
 .final-container .bday-title {
@@ -279,7 +279,7 @@ body {
   text-align:center;
   color: var(--pink-500);
   position: relative;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 @keyframes pulseText {
   0%,100%{transform:scale(1)} 50%{transform:scale(1.03)}
@@ -682,13 +682,13 @@ body {
       <i class="fa-solid fa-cake-candles icon-inline"></i> Happy 18th Birthday, Princess cantikku! <i class="fa-solid fa-cake-candles icon-inline"></i>
     </h1>
 
-    <!-- ✏️ EDIT: GIF selebrasi -->
-    <img class="decor-gif" style="max-width:180px; border-radius:16px;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWNlOGl2MmF1eXF1ZWhrYzhjMnpmbDBmZnU0aGR1OGY0OHFwMnk5ciZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/aQuMoDDzHv4AivLPNn/giphy.gif" alt="celebration">
-
     <!-- ✏️ EDIT: Ubah isi pesan ulang tahun di bawah -->
-    <div class="bday-msg">
-      <img class="decor-gif" style="position:absolute; top:-20px; left:0px; width:60px; --rot:-15deg; z-index:10; border-radius:12px; pointer-events:none;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3U2NGJkODNjMmh6YnR4b3RqMno4amJzY2Via3g3emxxemlndDl4NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/W0VuY0dTxH9L6vLUJ2/giphy.gif" alt="cute hug">
-      <img class="decor-gif" style="position:absolute; bottom:-15px; right:0px; width:65px; --rot:10deg; z-index:10; border-radius:12px; pointer-events:none;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWNlOGl2MmF1eXF1ZWhrYzhjMnpmbDBmZnU0aGR1OGY0OHFwMnk5ciZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/ztisqLhP99tVSHG136/giphy.gif" alt="bubu dudu">
+    <div class="bday-msg" style="margin-bottom: 32px;">
+      <!-- ✏️ EDIT: GIF selebrasi (dipindah ke dalam card agar teks lebih dekat ke judul) -->
+      <img class="decor-gif" style="max-width:140px; margin: 0 auto 16px; display:block; border-radius:16px;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWNlOGl2MmF1eXF1ZWhrYzhjMnpmbDBmZnU0aGR1OGY0OHFwMnk5ciZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/aQuMoDDzHv4AivLPNn/giphy.gif" alt="celebration">
+
+      <img class="decor-gif" style="position:absolute; top:-25px; left:-10px; width:65px; --rot:-15deg; z-index:10; pointer-events:none;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjU2NGJkODNjMmh6YnR4b3RqMno4amJzY2Via3g3emxxemlndDl4NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/W0VuY0dTxH9L6vLUJ2/giphy.gif" alt="cute hug">
+      <img class="decor-gif" style="position:absolute; bottom:-15px; right:-10px; width:70px; --rot:10deg; z-index:10; pointer-events:none;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWNlOGl2MmF1eXF1ZWhrYzhjMnpmbDBmZnU0aGR1OGY0OHFwMnk5ciZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/ztisqLhP99tVSHG136/giphy.gif" alt="bubu dudu">
       <div class="icon-big"><i class="fa-solid fa-party-horn icon-pink" style="font-size:2.5rem;"></i></div>
       <p>
         Selamat ulang tahun yang ke-18, sayangku! <i class="fa-solid fa-champagne-glasses icon-inline icon-gold"></i><i class="fa-solid fa-heart icon-inline icon-pink"></i><br><br>
